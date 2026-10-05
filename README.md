@@ -50,6 +50,25 @@ npm run build
 npm start
 ```
 
+## 🌍 Déploiement (URL publique gratuite)
+
+Le site est 100% statique → zéro backend, zéro secret. Deux options :
+
+**Vercel** (recommandé) :
+
+```bash
+npm i -g vercel
+vercel login
+vercel --prod --yes
+```
+
+**GitHub Pages** : voir [DEPLOIEMENT.md](./DEPLOIEMENT.md) pour le guide complet
+(build avec `BASE_PATH`, branche `gh-pages`, `.nojekyll`).
+
+Sites en ligne :
+- https://haveibeenpwned-better.vercel.app
+- https://lkyle194.github.io/haveibeenpwned-better/
+
 ## 📁 Structure
 
 ```

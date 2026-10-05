@@ -61,6 +61,11 @@ Créer une application web moderne, ultra-rapide, amusante et 100% sécurisée p
 - [ ] Valider la compatibilité mobile (responsive parfait sur smartphone).
 - [ ] Livrer le code source prêt à être déployé sur Vercel.
 
+### PHASE 7 : Déploiement et URL Gratuite
+- [ ] Créer un script ou un fichier de documentation explicite (`DEPLOIEMENT.md`).
+- [ ] Expliquer étape par étape comment utiliser la CLI de Vercel ou Netlify (ex: `npm i -g vercel` puis `vercel --prod`) directement dans le terminal.
+- [ ] L'objectif final de cette phase est de me fournir les commandes exactes à taper pour que le site soit en ligne en 2 minutes avec une URL publique gratuite (HTTPS) à partager à mes amis.
+
 ---
 
 ## 🏁 LIVRABLE ATTENDU

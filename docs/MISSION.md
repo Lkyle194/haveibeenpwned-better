@@ -70,3 +70,4 @@ Créer une application web moderne, ultra-rapide, amusante et 100% sécurisée p
 
 ## 🏁 LIVRABLE ATTENDU
 Le code source complet du projet avec un fichier `README.md` expliquant les commandes d'installation (`npm install`, `npm run dev`) et le guide de déploiement en 1 clic.
+

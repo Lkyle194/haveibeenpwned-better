@@ -19,8 +19,13 @@ interface Props {
   result: CheckResult;
 }
 
+/** Nombre max de cartes affichées (les autres sont comptés). */
+const MAX_CARDS = 12;
+
 export default function BreachList({ result }: Props) {
   const { breaches, dataTypes, mode } = result;
+  const shown = breaches.slice(0, MAX_CARDS);
+  const hidden = breaches.length - shown.length;
 
   // Cas : aucune fuite
   if (breaches.length === 0) {
@@ -54,11 +59,18 @@ export default function BreachList({ result }: Props) {
         </h3>
       </div>
 
-      {/* Cartes de fuites */}
+      {/* Cartes de fuites (limitées pour rester lisible) */}
       <div className="grid gap-3">
-        {breaches.map((b, i) => (
+        {shown.map((b, i) => (
           <BreachCard key={b.service} breach={b} index={i} />
         ))}
+        {hidden > 0 && (
+          <div className="rounded-xl border border-dashed border-[#1c2a45] p-4 text-center">
+            <p className="font-mono text-xs text-slate-500">
+              + {hidden} autres services compromis…
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Types de données compromis (union) */}

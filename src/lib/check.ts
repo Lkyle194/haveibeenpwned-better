@@ -54,8 +54,20 @@ export async function checkEmail(email: string): Promise<CheckResult> {
   }
 
   const data = await res.json();
-  const serviceNames: string[] = Array.isArray(data?.breaches) ? data.breaches : [];
-  const breaches: Breach[] = enrichBreaches(serviceNames);
+  // XposedOrNot renvoie `breaches` soit comme liste plate de strings,
+  // soit comme liste imbriquée ([[ "ServiceA", "ServiceB", ... ]]).
+  // On aplatit pour normaliser les deux formats.
+  const raw: unknown = data?.breaches;
+  const serviceNames: string[] = Array.isArray(raw)
+    ? raw
+        .flatMap((entry: unknown) =>
+          Array.isArray(entry) ? entry : [entry]
+        )
+        .filter((n): n is string => typeof n === "string")
+    : [];
+  // Déduplication (les clés React doivent être uniques).
+  const uniqueNames = Array.from(new Set(serviceNames));
+  const breaches: Breach[] = enrichBreaches(uniqueNames);
 
   const dataTypes = new Set<string>();
   for (const b of breaches) for (const t of b.dataTypes) dataTypes.add(t);
